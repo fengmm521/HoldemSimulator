@@ -50,7 +50,6 @@ def gethashDat():
 
 
 def createPK(pkey = '3'):
-    ks,dic = gethashDat()
     pks = []
     tmpkey = hashlib.sha512(pkey).digest()
     while len(pks) < 52:
@@ -60,7 +59,7 @@ def createPK(pkey = '3'):
             pk = tmp%52
             if pk not in pks:
                 pks.append(pk)
-    return pks,dic
+    return pks
     #得到52张扑克的hash
 
 def getUserPk():
@@ -97,7 +96,8 @@ def getUserPk():
 
 
 def main():
-    getUserPk()
+    pks = createPK()
+    print(pks)
 
 if __name__ == '__main__':
     main()
